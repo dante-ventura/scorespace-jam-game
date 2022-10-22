@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/MazePrototype.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Timer.gd" type="Script" id=2]
+
+[node name="GameScene" type="Node2D"]
+
+[node name="MazePrototype" parent="." instance=ExtResource( 1 )]
+position = Vector2( 950, 521 )
+
+[node name="TimerLabel" type="Label" parent="."]
+margin_left = 324.0
+margin_top = 76.0
+margin_right = 363.0
+margin_bottom = 107.0
+rect_scale = Vector2( 5.54332, 4.61885 )
+script = ExtResource( 2 )

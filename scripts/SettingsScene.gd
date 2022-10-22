@@ -9,4 +9,4 @@ func _on_SfxSlider_value_changed(value):
 
 
 func _on_ButtonHome_pressed():
-	get_tree().change_scene("res://HomeBase.tscn")
+	get_tree().change_scene("res://scenes/HomeBase.tscn")
