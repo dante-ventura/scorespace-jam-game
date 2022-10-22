@@ -3,7 +3,6 @@
 [ext_resource path="res://scenes/MazeBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/prototype_maze.png" type="Texture" id=2]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 2.5, 89.5 )
 
@@ -56,6 +55,7 @@ extents = Vector2( 2.5, 24.5 )
 extents = Vector2( 33.5, 2.5 )
 
 [node name="MazePrototype" instance=ExtResource( 1 )]
+position = Vector2( 924, 515 )
 
 [node name="MazeBody" type="KinematicBody2D" parent="." index="0"]
 
@@ -129,3 +129,6 @@ shape = SubResource( 16 )
 [node name="CollisionShape2D17" type="CollisionShape2D" parent="MazeBody" index="17"]
 position = Vector2( 65.5, -137.5 )
 shape = SubResource( 17 )
+
+[node name="SpawnPosition" parent="." index="1"]
+position = Vector2( 12, -200 )

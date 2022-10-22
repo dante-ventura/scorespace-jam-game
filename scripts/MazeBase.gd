@@ -1,5 +1,6 @@
 extends Node2D
 
+export(NodePath) var player_spawn_point
 export var rotation_speed = 0.005
 export var max_rotation_speed = 0.05
 var rotation_rad = 0
