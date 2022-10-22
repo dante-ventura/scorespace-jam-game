@@ -58,6 +58,8 @@ extents = Vector2( 33.5, 2.5 )
 position = Vector2( 924, 515 )
 
 [node name="MazeBody" type="KinematicBody2D" parent="." index="0"]
+position = Vector2( 39, 0 )
+scale = Vector2( 2, 2 )
 
 [node name="Sprite" type="Sprite" parent="MazeBody" index="0"]
 texture = ExtResource( 2 )
@@ -131,4 +133,4 @@ position = Vector2( 65.5, -137.5 )
 shape = SubResource( 17 )
 
 [node name="SpawnPosition" parent="." index="1"]
-position = Vector2( 12, -200 )
+position = Vector2( 51, -410 )

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scripts/MazeBase.gd" type="Script" id=2]
 
-[node name="MazeBase" type="Node2D"]
+[node name="MazeBase" type="Node2D" groups=["Maze"]]
 position = Vector2( 512, 300 )
 script = ExtResource( 2 )
 
