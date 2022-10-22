@@ -5,7 +5,7 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 21.0
 
-[node name="Player" type="RigidBody2D"]
+[node name="Player" type="RigidBody2D" groups=["Player"]]
 position = Vector2( 962, 456 )
 gravity_scale = 8.0
 applied_torque = 500.0
