@@ -5,3 +5,5 @@
 [node name="MazeBase" type="Node2D"]
 position = Vector2( 512, 300 )
 script = ExtResource( 2 )
+
+[node name="SpawnPosition" type="Position2D" parent="."]
