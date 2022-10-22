@@ -133,6 +133,7 @@ position = Vector2( 65.5, -137.5 )
 shape = SubResource( 17 )
 
 [node name="SpawnPosition" parent="." index="1"]
+
 position = Vector2( 51, -410 )
 
 [node name="EndGoal" parent="." index="2"]
