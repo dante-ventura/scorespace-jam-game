@@ -1,5 +1,0 @@
-[gd_scene format=2]
-
-[node name="HomeScreenScene" type="Node2D"]
-
-[node name="HomeScreen" type="Node2D" parent="."]
