@@ -13,9 +13,9 @@ func get_input():
 		!Input.is_action_pressed("gameplay_rotate_left")):
 		rotation_rad = move_toward(rotation_rad, 0, rotation_speed)
 		
-	if Input.is_action_pressed("gameplay_rotate_right"):
-		rotation_rad = max(rotation_rad-rotation_speed, -max_rotation_speed)
 	if Input.is_action_pressed("gameplay_rotate_left"):
+		rotation_rad = max(rotation_rad-rotation_speed, -max_rotation_speed)
+	if Input.is_action_pressed("gameplay_rotate_right"):
 		rotation_rad = min(rotation_rad+rotation_speed, max_rotation_speed)
 
 func _physics_process(delta):
