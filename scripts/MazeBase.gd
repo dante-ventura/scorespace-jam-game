@@ -1,7 +1,7 @@
 extends Node2D
 
-export var rotation_speed = 0.005
-export var max_rotation_speed = 0.05
+export var rotation_speed = 0.2
+export var max_rotation_speed = 2.0
 var rotation_rad = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -18,6 +18,6 @@ func get_input():
 	if Input.is_action_pressed("gameplay_rotate_right"):
 		rotation_rad = min(rotation_rad+rotation_speed, max_rotation_speed)
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	get_input()
-	rotate(rotation_rad)
+	rotate(rotation_rad*delta)

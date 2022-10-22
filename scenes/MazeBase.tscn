@@ -1,9 +1,17 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scripts/MazeBase.gd" type="Script" id=2]
 
-[node name="MazeBase" type="Node2D"]
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 44.5, 10 )
+
+[node name="MazeBase" type="Node2D" groups=["Maze"]]
 position = Vector2( 512, 300 )
 script = ExtResource( 2 )
 
 [node name="SpawnPosition" type="Position2D" parent="."]
+
+[node name="EndGoal" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EndGoal"]
+shape = SubResource( 1 )
