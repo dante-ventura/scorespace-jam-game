@@ -5,3 +5,4 @@
 [node name="GameScene" type="Node2D"]
 
 [node name="MazePrototype" parent="." instance=ExtResource( 1 )]
+position = Vector2( 950, 521 )
