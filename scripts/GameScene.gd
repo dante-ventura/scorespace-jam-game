@@ -40,7 +40,6 @@ func _exited_end_goal(body: Node):
 func show_leaderboard():
 # warning-ignore:return_value_discarded
 	get_node("Timer").timer_on = false
-	print(get_node("Timer").time)
 	saveTime(get_node("Timer").time)
 	get_tree().change_scene("res://scenes/LeaderboardBase.tscn")
 	# Load leaderboard scene and send new time
