@@ -39,5 +39,13 @@ func _exited_end_goal(body: Node):
 func show_leaderboard():
 # warning-ignore:return_value_discarded
 	get_node("Timer").timer_on = false
+	saveTime(get_node("Timer").time_passed)
 	get_tree().change_scene("res://scenes/LeaderboardBase.tscn")
 	# Load leaderboard scene and send new time
+
+
+func saveTime(content):
+	var file = File.new()
+	file.open("user://leaderboard.txt", File.WRITE)
+	file.store_string(content)
+	file.close()
