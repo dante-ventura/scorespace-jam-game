@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/sounds/menu_hover.ogg" type="AudioStream" id=1]
+[ext_resource path="res://assets/sounds/menu_select.ogg" type="AudioStream" id=2]
+[ext_resource path="res://assets/sounds/music_misc.ogg" type="AudioStream" id=3]
+[ext_resource path="res://scripts/AudioManager.gd" type="Script" id=4]
+[ext_resource path="res://assets/sounds/music_background.ogg" type="AudioStream" id=5]
+
+[node name="AudioManager" type="Node"]
+script = ExtResource( 4 )
+
+[node name="MenuHoverAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+bus = "Sfx"
+
+[node name="MenuSelectAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+bus = "Sfx"
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+bus = "Music"
+
+[node name="GameMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+bus = "Music"
