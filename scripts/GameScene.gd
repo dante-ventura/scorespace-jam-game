@@ -7,6 +7,7 @@ var player = preload("res://scenes/Player.tscn").instance()
 var levels = { 
 	1: preload("res://scenes/MazePrototype.tscn").instance()
 }
+var default_data = "0"
 
 func _ready():
 	next_level()
@@ -39,13 +40,33 @@ func _exited_end_goal(body: Node):
 func show_leaderboard():
 # warning-ignore:return_value_discarded
 	get_node("Timer").timer_on = false
-	saveTime(get_node("Timer").time_passed)
+	saveTime(get_node("Timer").time)
 	get_tree().change_scene("res://scenes/LeaderboardBase.tscn")
 	# Load leaderboard scene and send new time
 
 
 func saveTime(content):
+
 	var file = File.new()
-	file.open("user://leaderboard.txt", File.WRITE)
-	file.store_string(content)
+	if not file.file_exists("user://leaderboard.txt"):
+		file.open("user://leaderboard.txt", File.WRITE)
+		file.store_string("9999999")
+		file.close()
+	var loadedTime = loadTime()
+	file.open("user://leaderboardCurr.txt", File.WRITE)
+	file.store_string(str(content))
 	file.close()
+	if(loadedTime > content):
+		file.open("user://leaderboard.txt", File.WRITE)
+		file.store_string(str(content))
+	file.close()
+
+
+
+func loadTime():
+	var file = File.new()
+	file.open("user://leaderboard.txt", File.READ)
+	var content = file.get_as_text()
+	file.close()
+	return float(content)
+
