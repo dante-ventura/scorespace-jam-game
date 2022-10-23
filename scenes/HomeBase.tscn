@@ -1,33 +1,76 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/HomeBase.gd" type="Script" id=1]
+[ext_resource path="res://assets/1bittitlescreen.png" type="Texture" id=2]
+[ext_resource path="res://assets/startbutton.png" type="Texture" id=3]
+[ext_resource path="res://assets/fonts/calligro-font.fnt" type="BitmapFont" id=4]
+[ext_resource path="res://scripts/ButtonSceneSwitch.gd" type="Script" id=5]
+[ext_resource path="res://scenes/SettingsScene.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/LeaderboardBase.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/GameScene.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/Quit.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/AudioManager.tscn" type="PackedScene" id=10]
 
 [node name="HomeScreenScene" type="Node2D"]
 position = Vector2( 0, 1 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_vertical_guides_": [ 961.0 ]
+}
 
-[node name="ButtonStart" type="Button" parent="."]
-margin_left = 855.0
-margin_top = 402.0
-margin_right = 1061.0
-margin_bottom = 463.0
-toggle_mode = true
+[node name="Background" type="Sprite" parent="."]
+scale = Vector2( 10, 10 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="SelectSprite" type="Sprite" parent="."]
+position = Vector2( 755, 528 )
+scale = Vector2( 8, 8 )
+texture = ExtResource( 3 )
+
+[node name="StartButton" type="Label" parent="."]
+margin_left = 835.0
+margin_top = 503.0
+margin_right = 1465.0
+margin_bottom = 631.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = ExtResource( 4 )
 text = "start"
+script = ExtResource( 5 )
+is_selected = true
+switch_to_scene = ExtResource( 8 )
 
-[node name="ButtonOptions" type="Button" parent="."]
-margin_left = 859.0
-margin_top = 495.0
-margin_right = 1058.0
-margin_bottom = 558.0
-text = "option"
+[node name="OptionsButton" type="Label" parent="."]
+margin_left = 787.0
+margin_top = 625.0
+margin_right = 1669.0
+margin_bottom = 753.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = ExtResource( 4 )
+text = "options"
+script = ExtResource( 5 )
+switch_to_scene = ExtResource( 6 )
 
-[node name="ButtonLeaderboard" type="Button" parent="."]
-margin_left = 857.0
-margin_top = 581.0
-margin_right = 1061.0
-margin_bottom = 647.0
+[node name="LeaderboardButton" type="Label" parent="."]
+margin_left = 684.0
+margin_top = 738.0
+margin_right = 2070.0
+margin_bottom = 866.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = ExtResource( 4 )
 text = "leaderboard"
+script = ExtResource( 5 )
+switch_to_scene = ExtResource( 7 )
 
-[connection signal="pressed" from="ButtonStart" to="." method="_on_ButtonStart_pressed"]
-[connection signal="pressed" from="ButtonOptions" to="." method="_on_ButtonOptions_pressed"]
-[connection signal="pressed" from="ButtonLeaderboard" to="." method="_on_ButtonLeaderboard_pressed"]
+[node name="QuitButton" type="Label" parent="."]
+margin_left = 861.0
+margin_top = 846.0
+margin_right = 1365.0
+margin_bottom = 974.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = ExtResource( 4 )
+text = "quit"
+script = ExtResource( 5 )
+switch_to_scene = ExtResource( 9 )
+
+[node name="AudioManager" parent="." instance=ExtResource( 10 )]
