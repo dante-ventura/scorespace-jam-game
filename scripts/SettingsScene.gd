@@ -54,5 +54,6 @@ func handle_sliders():
 			vol_label.update_volume()
 
 func _input(event):
+	# warning-ignore:return_value_discarded
 	if event.is_action_pressed("gameplay_pause"):
 		get_tree().change_scene($BackButton.switch_to_scene)

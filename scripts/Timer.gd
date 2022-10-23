@@ -1,4 +1,8 @@
-extends Label
+extends Node
+
+onready var min_label = get_node("Min")
+onready var sec_label = get_node("Sec")
+onready var ms_label = get_node("Ms")
 
 var time = 0
 var timer_on = false
@@ -16,5 +20,6 @@ func _process(delta):
 	var secs = fmod(time, 60)
 	var mins = fmod(time, 60*60) / 60
 	var milli = fmod(time, 1) * 1000
-	var time_passed = "%02d:%02d:%03d" % [mins,secs,milli]
-	text = time_passed
+	min_label.text = "%02d" % [mins]
+	sec_label.text = "%02d" % [secs]
+	ms_label.text = "%02d" % [milli/10]

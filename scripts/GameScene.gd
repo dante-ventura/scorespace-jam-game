@@ -5,7 +5,9 @@ export(int) var current_level = 0
 var score = 0
 var player = preload("res://scenes/Player.tscn").instance()
 var levels = { 
-	1: preload("res://scenes/MazePrototype.tscn").instance()
+	2: preload("res://scenes/Maze1.tscn").instance(),
+	1: preload("res://scenes/Maze2.tscn").instance(),
+	3: preload("res://scenes/Maze3.tscn").instance()
 }
 var default_data = "0"
 
@@ -35,6 +37,7 @@ func next_level():
 func _exited_end_goal(body: Node):
 	if !body.is_in_group("Player"):
 		return
+	AudioManager.get_node("GameGoal").play();
 	call_deferred("next_level")
 
 func show_leaderboard():
