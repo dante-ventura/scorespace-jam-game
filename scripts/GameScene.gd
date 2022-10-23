@@ -46,6 +46,7 @@ func show_leaderboard():
 
 
 func saveTime(content):
+
 	var file = File.new()
 	if not file.file_exists("user://leaderboard.txt"):
 		file.open("user://leaderboard.txt", File.WRITE)
@@ -68,4 +69,4 @@ func loadTime():
 	var content = file.get_as_text()
 	file.close()
 	return float(content)
-	
+
