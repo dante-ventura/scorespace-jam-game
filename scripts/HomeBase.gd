@@ -11,6 +11,7 @@ onready var select_spr = get_node("SelectSprite")
 var current_selection = 0
 
 func _process(_delta):
+	# warning-ignore:return_value_discarded
 	if Input.is_action_just_pressed("menu_select"):
 		AudioManager.get_node("MenuSelectAudio").play()
 		get_tree().change_scene_to(buttons[current_selection].switch_to_scene)
