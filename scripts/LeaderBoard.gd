@@ -7,11 +7,13 @@ extends Label
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+
 	var time = loadTime()
 	var secs = fmod(time, 60)
 	var mins = fmod(time, 60*60) / 60
 	var milli = fmod(time, 1) * 1000
 	text = "Best Time\n%02d:%02d:%03d" % [mins,secs,milli]
+
 	pass # Replace with function body.
 
 
@@ -24,3 +26,4 @@ func loadTime():
 	var content = file.get_as_text()
 	file.close()
 	return float(content)
+
