@@ -7,13 +7,11 @@ extends Label
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-
 	var time = loadTime()
 	var secs = fmod(time, 60)
 	var mins = fmod(time, 60*60) / 60
 	var milli = fmod(time, 1) * 1000
-	text = "Best Time\n%02d:%02d:%03d" % [mins,secs,milli]
-
+	text = "Last Time\n%02d:%02d:%03d" % [mins,secs,milli]
 	pass # Replace with function body.
 
 
@@ -22,8 +20,7 @@ func _ready():
 #	pass
 func loadTime():
 	var file = File.new()
-	file.open("user://leaderboard.txt", File.READ)
+	file.open("user://leaderboardCurr.txt", File.READ)
 	var content = file.get_as_text()
 	file.close()
 	return float(content)
-
