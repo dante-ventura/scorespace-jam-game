@@ -3,8 +3,8 @@ extends Label
 
 func _ready():
 	var time = loadTime()
-	var mins = fmod(time, 60*60) / 60
-	text = "%02d" % [mins]
+	var milli = fmod(time, 1) * 1000
+	text = "%03d" % [milli]
 	pass # Replace with function body.
 
 
