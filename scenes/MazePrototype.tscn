@@ -140,4 +140,5 @@ position = Vector2( 51, -410 )
 position = Vector2( -222, 136 )
 
 [node name="CollisionShape2D" parent="EndGoal" index="0"]
+
 position = Vector2( -34.5, 0 )
