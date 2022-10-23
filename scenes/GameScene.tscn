@@ -37,3 +37,5 @@ margin_right = 765.0
 margin_bottom = 467.0
 rect_scale = Vector2( 3.03456, 2.31517 )
 text = "paused press esc to unpause"
+
+[connection signal="pressed" from="CanvasLayer/Pause/PauseButton" to="CanvasLayer/Pause" method="_on_PauseButton_pressed"]
