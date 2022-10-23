@@ -14,7 +14,7 @@ func _process(_delta):
 	# warning-ignore:return_value_discarded
 	if Input.is_action_just_pressed("menu_select"):
 		AudioManager.get_node("MenuSelectAudio").play()
-		get_tree().change_scene_to(buttons[current_selection].switch_to_scene)
+		get_tree().change_scene(buttons[current_selection].switch_to_scene)
 	
 	var orig_selection = current_selection
 	if (Input.is_action_just_pressed("menu_down") and

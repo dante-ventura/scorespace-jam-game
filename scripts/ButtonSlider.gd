@@ -1,7 +1,7 @@
 extends Label
 
 export(bool) var is_selected = false
-export(String, FILE) var switch_to_scene
+export(NodePath) var slider_value_node
 
 var start_pos = rect_position
 
@@ -14,6 +14,7 @@ var tween_speed = 20
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	slider_value_node = get_node(slider_value_node).get_path()
 	add_child(tween)
 	tween.connect("tween_completed", self, "_on_Tween_Completed")
 	tween.playback_speed = 20

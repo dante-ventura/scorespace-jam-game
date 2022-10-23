@@ -1,63 +1,133 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/SettingsScene.gd" type="Script" id=1]
-
+[ext_resource path="res://assets/optionsscreen.png" type="Texture" id=2]
+[ext_resource path="res://assets/fonts/calligro-font.fnt" type="BitmapFont" id=3]
+[ext_resource path="res://assets/startbutton.png" type="Texture" id=4]
+[ext_resource path="res://scripts/ButtonSceneSwitch.gd" type="Script" id=5]
+[ext_resource path="res://scripts/ButtonSlider.gd" type="Script" id=6]
+[ext_resource path="res://scripts/MusicVolume.gd" type="Script" id=7]
+[ext_resource path="res://scripts/SfxVolume.gd" type="Script" id=8]
 
 [node name="SettingsScene" type="Node2D"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ],
+"_edit_vertical_guides_": [ 960.0 ]
+}
 
-[node name="ButtonHome" type="Button" parent="."]
-margin_left = 59.0
-margin_top = 35.0
-margin_right = 201.0
-margin_bottom = 86.0
-text = "go back"
+[node name="Background" type="Sprite" parent="."]
+scale = Vector2( 10, 10 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="SelectSprite" type="Sprite" parent="."]
+position = Vector2( 619, 435 )
+scale = Vector2( 8, 8 )
+texture = ExtResource( 4 )
 
 [node name="SettingsLabel" type="Label" parent="."]
-margin_left = 896.0
-margin_top = 25.0
-margin_right = 951.0
-margin_bottom = 40.0
-rect_scale = Vector2( 3.84854, 3.99702 )
-text = "settings"
+margin_left = 652.0
+margin_top = 206.0
+margin_right = 1534.0
+margin_bottom = 334.0
+rect_scale = Vector2( 0.7, 0.7 )
+custom_fonts/font = ExtResource( 3 )
+text = "options"
 align = 1
 
-[node name="MusicSlider" type="HSlider" parent="."]
-margin_left = 840.0
-margin_top = 184.0
-margin_right = 1163.0
-margin_bottom = 228.0
-value = 100.0
+[node name="Music" type="Node" parent="."]
 
-[node name="VolumeLabel" type="Label" parent="."]
-margin_left = 773.0
-margin_top = 133.0
-margin_right = 822.0
-margin_bottom = 147.0
-rect_scale = Vector2( 9.58816, 1.86528 )
-text = "volume"
+[node name="MusicVolume" type="Label" parent="Music"]
+margin_left = 1010.0
+margin_top = 413.0
+margin_right = 1497.0
+margin_bottom = 541.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = ExtResource( 3 )
+text = "10"
+align = 1
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
-[node name="MusicLabel" type="Label" parent="."]
-margin_left = 841.0
-margin_top = 182.0
-margin_right = 881.0
-margin_bottom = 196.0
+[node name="RightArrow" type="Sprite" parent="Music"]
+position = Vector2( 1189, 439 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 4 )
+
+[node name="LeftArrow" type="Sprite" parent="Music"]
+position = Vector2( 1016, 439 )
+rotation = -3.14159
+scale = Vector2( 5, 5 )
+texture = ExtResource( 4 )
+
+[node name="MusicButton" type="Label" parent="Music"]
+margin_left = 699.0
+margin_top = 413.0
+margin_right = 1329.0
+margin_bottom = 541.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = ExtResource( 3 )
 text = "music"
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+slider_value_node = NodePath("../MusicVolume")
 
-[node name="SfxSlider" type="HSlider" parent="."]
-margin_left = 841.0
-margin_top = 252.0
-margin_right = 1165.0
-margin_bottom = 268.0
-value = 100.0
+[node name="Sfx" type="Node" parent="."]
 
-[node name="SfxLabel" type="Label" parent="."]
-margin_left = 842.0
-margin_top = 238.0
-margin_right = 882.0
-margin_bottom = 252.0
+[node name="SfxVolume" type="Label" parent="Sfx"]
+margin_left = 1009.0
+margin_top = 555.0
+margin_right = 1496.0
+margin_bottom = 683.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = ExtResource( 3 )
+text = "10"
+align = 1
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="RightArrow" type="Sprite" parent="Sfx"]
+position = Vector2( 1188, 580 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 4 )
+
+[node name="LeftArrow" type="Sprite" parent="Sfx"]
+position = Vector2( 1015, 580 )
+rotation = -3.14159
+scale = Vector2( 5, 5 )
+texture = ExtResource( 4 )
+
+[node name="SfxButton" type="Label" parent="Sfx"]
+margin_left = 698.0
+margin_top = 554.0
+margin_right = 1328.0
+margin_bottom = 682.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = ExtResource( 3 )
 text = "sfx"
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+slider_value_node = NodePath("../SfxVolume")
 
-[connection signal="pressed" from="ButtonHome" to="." method="_on_ButtonHome_pressed"]
-[connection signal="value_changed" from="MusicSlider" to="." method="_on_MusicSlider_value_changed"]
-[connection signal="value_changed" from="SfxSlider" to="." method="_on_SfxSlider_value_changed"]
+[node name="BackButton" type="Label" parent="."]
+margin_left = 861.0
+margin_top = 695.0
+margin_right = 1365.0
+margin_bottom = 823.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = ExtResource( 3 )
+text = "back"
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+switch_to_scene = "res://scenes/HomeBase.tscn"
