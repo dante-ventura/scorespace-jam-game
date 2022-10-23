@@ -2,6 +2,7 @@ extends Node2D
 
 export(int) var current_level = 0
 
+var score = 0
 var player = preload("res://scenes/Player.tscn").instance()
 var levels = { 
 	1: preload("res://scenes/MazePrototype.tscn").instance()
@@ -36,5 +37,7 @@ func _exited_end_goal(body: Node):
 	call_deferred("next_level")
 
 func show_leaderboard():
+# warning-ignore:return_value_discarded
 	get_node("Timer").timer_on = false
+	get_tree().change_scene("res://scenes/LeaderboardBase.tscn")
 	# Load leaderboard scene and send new time

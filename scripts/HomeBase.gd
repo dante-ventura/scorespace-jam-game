@@ -12,4 +12,4 @@ func _on_ButtonOptions_pressed():
 
 func _on_ButtonLeaderboard_pressed():
 # warning-ignore:return_value_discarded
-	get_tree().change_scene("res://scenes/GameScene.tscn")
+	get_tree().change_scene("res://scenes/LeaderboardBase.tscn")
