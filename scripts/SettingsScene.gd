@@ -12,9 +12,11 @@ var current_selection = 0
 func _process(_delta):
 	# warning-ignore:return_value_discarded
 	if (Input.is_action_just_pressed("menu_select") and
-		buttons[current_selection].get("switch_to_scene")):
+		buttons[current_selection].name == "BackButton"):
 		AudioManager.get_node("MenuSelectAudio").play()
-		get_tree().change_scene(buttons[current_selection].switch_to_scene)
+		get_tree().paused = false
+		get_parent().remove_child(self)
+		return
 	
 	var orig_selection = current_selection
 	if (Input.is_action_just_pressed("menu_down") and
@@ -56,4 +58,6 @@ func handle_sliders():
 func _input(event):
 	# warning-ignore:return_value_discarded
 	if event.is_action_pressed("gameplay_pause"):
-		get_tree().change_scene($BackButton.switch_to_scene)
+		AudioManager.get_node("MenuSelectAudio").play()
+		get_tree().paused = false
+		get_parent().remove_child(self)

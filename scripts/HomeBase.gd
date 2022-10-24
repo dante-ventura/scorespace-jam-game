@@ -14,6 +14,12 @@ func _process(_delta):
 	# warning-ignore:return_value_discarded
 	if Input.is_action_just_pressed("menu_select"):
 		AudioManager.get_node("MenuSelectAudio").play()
+		if buttons[current_selection].name == "OptionsButton":
+			var options_scene = load("res://scenes/SettingsScene.tscn").instance()
+			options_scene.pause_mode = Node.PAUSE_MODE_PROCESS
+			get_tree().paused = true
+			get_parent().add_child(options_scene)
+			return
 		get_tree().change_scene(buttons[current_selection].switch_to_scene)
 	
 	var orig_selection = current_selection

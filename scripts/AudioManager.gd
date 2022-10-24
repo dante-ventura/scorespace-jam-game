@@ -1,6 +1,7 @@
 extends Node
 
 func _ready():
+	pause_mode = PAUSE_MODE_PROCESS
 	AudioServer.set_bus_volume_db(1, -20)
 	AudioServer.set_bus_volume_db(2, -20)
 

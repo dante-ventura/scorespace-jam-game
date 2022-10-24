@@ -1,18 +1,89 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/GameScene.gd" type="Script" id=1]
 [ext_resource path="res://scripts/Timer.gd" type="Script" id=2]
 [ext_resource path="res://scripts/Pause.gd" type="Script" id=3]
 [ext_resource path="res://assets/frame1bit.png" type="Texture" id=4]
 [ext_resource path="res://assets/fonts/calligro-font.fnt" type="BitmapFont" id=5]
+[ext_resource path="res://scripts/ButtonSceneSwitch.gd" type="Script" id=6]
+[ext_resource path="res://assets/startbutton.png" type="Texture" id=7]
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 560.0, 432.0, 382.0, 334.0 ],
+"_edit_vertical_guides_": [ 960.0, 94.0, 388.0, 379.0 ]
+}
 
 [node name="Background" type="Sprite" parent="."]
 scale = Vector2( 10, 10 )
 texture = ExtResource( 4 )
 centered = false
+
+[node name="Guide" type="Node2D" parent="."]
+
+[node name="GuideText" type="Label" parent="Guide"]
+margin_left = 91.0
+margin_top = 231.0
+margin_right = 1099.0
+margin_bottom = 359.0
+rect_scale = Vector2( 0.3, 0.3 )
+custom_fonts/font = ExtResource( 5 )
+text = "controls"
+
+[node name="GuideRight" type="Label" parent="Guide"]
+margin_left = 256.0
+margin_top = 308.0
+margin_right = 886.0
+margin_bottom = 436.0
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = ExtResource( 5 )
+text = "right"
+
+[node name="GuideRight2" type="Label" parent="Guide"]
+margin_left = 101.0
+margin_top = 309.0
+margin_right = 531.0
+margin_bottom = 437.0
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = ExtResource( 5 )
+text = "d"
+
+[node name="GuideLeft" type="Label" parent="Guide"]
+margin_left = 281.0
+margin_top = 357.0
+margin_right = 785.0
+margin_bottom = 485.0
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = ExtResource( 5 )
+text = "left"
+
+[node name="GuideLeft2" type="Label" parent="Guide"]
+margin_left = 102.0
+margin_top = 357.0
+margin_right = 606.0
+margin_bottom = 485.0
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = ExtResource( 5 )
+text = "a"
+
+[node name="GuidePause" type="Label" parent="Guide"]
+margin_left = 256.0
+margin_top = 406.0
+margin_right = 886.0
+margin_bottom = 534.0
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = ExtResource( 5 )
+text = "pause"
+
+[node name="GuidePause2" type="Label" parent="Guide"]
+margin_left = 102.0
+margin_top = 406.0
+margin_right = 732.0
+margin_bottom = 534.0
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = ExtResource( 5 )
+text = "esc"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 50
@@ -29,13 +100,42 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.486275 )
 
-[node name="PauseButton" type="Button" parent="CanvasLayer/Pause"]
-margin_left = 408.0
-margin_top = 183.0
-margin_right = 765.0
-margin_bottom = 467.0
-rect_scale = Vector2( 3.03456, 2.31517 )
-text = "paused press esc to unpause"
+[node name="PauseLabel" type="Label" parent="CanvasLayer/Pause"]
+margin_left = 738.0
+margin_top = 206.0
+margin_right = 1368.0
+margin_bottom = 334.0
+rect_scale = Vector2( 0.7, 0.7 )
+custom_fonts/font = ExtResource( 5 )
+text = "pause"
+
+[node name="OptionsButton" type="Label" parent="CanvasLayer/Pause"]
+margin_left = 784.0
+margin_top = 460.0
+margin_right = 1666.0
+margin_bottom = 588.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = ExtResource( 5 )
+text = "options"
+script = ExtResource( 6 )
+is_selected = true
+switch_to_scene = "res://scenes/SettingsScene.tscn"
+
+[node name="ExitButton" type="Label" parent="CanvasLayer/Pause"]
+margin_left = 859.0
+margin_top = 624.0
+margin_right = 1363.0
+margin_bottom = 752.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = ExtResource( 5 )
+text = "home"
+script = ExtResource( 6 )
+switch_to_scene = "res://scenes/HomeBase.tscn"
+
+[node name="SelectSprite" type="Sprite" parent="CanvasLayer/Pause"]
+position = Vector2( 704, 485 )
+scale = Vector2( 8, 8 )
+texture = ExtResource( 7 )
 
 [node name="Timer" type="Node" parent="."]
 script = ExtResource( 2 )
@@ -88,5 +188,3 @@ margin_bottom = 234.0
 rect_scale = Vector2( 0.35, 0.35 )
 custom_fonts/font = ExtResource( 5 )
 text = "00"
-
-[connection signal="pressed" from="CanvasLayer/Pause/PauseButton" to="CanvasLayer/Pause" method="_on_PauseButton_pressed"]

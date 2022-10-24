@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/optionsscreen.png" type="Texture" id=2]
 [ext_resource path="res://assets/fonts/calligro-font.fnt" type="BitmapFont" id=3]
 [ext_resource path="res://assets/startbutton.png" type="Texture" id=4]
-[ext_resource path="res://scripts/ButtonSceneSwitch.gd" type="Script" id=5]
+[ext_resource path="res://scripts/ButtonBack.gd" type="Script" id=5]
 [ext_resource path="res://scripts/ButtonSlider.gd" type="Script" id=6]
 [ext_resource path="res://scripts/MusicVolume.gd" type="Script" id=7]
 [ext_resource path="res://scripts/SfxVolume.gd" type="Script" id=8]
@@ -75,6 +75,7 @@ script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
+is_selected = true
 slider_value_node = NodePath("../MusicVolume")
 
 [node name="Sfx" type="Node" parent="."]
@@ -130,4 +131,3 @@ script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
-switch_to_scene = "res://scenes/HomeBase.tscn"
