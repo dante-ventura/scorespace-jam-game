@@ -1,10 +1,11 @@
 extends Node2D
 
-export(int) var current_level = 0
+export(int) var current_level = -1
 
 var score = 0
 var player = preload("res://scenes/Player.tscn").instance()
 var levels = { 
+	0: preload("res://scenes/Maze0.tscn").instance(),
 	1: preload("res://scenes/Maze1.tscn").instance(),
 	2: preload("res://scenes/Maze2.tscn").instance(),
 	3: preload("res://scenes/Maze3.tscn").instance()
@@ -25,6 +26,8 @@ func next_level():
 	if !current_level in levels:
 		show_leaderboard()
 		return
+	if current_level > 0:
+		$Guide.visible = false
 	
 	var new_level = levels[current_level]
 	assert(new_level.is_in_group("Maze"))
@@ -37,7 +40,10 @@ func next_level():
 func _exited_end_goal(body: Node):
 	if !body.is_in_group("Player"):
 		return
-	AudioManager.get_node("GameGoal").play();
+	if !current_level in levels:
+		AudioManager.get_node("GameLeaderboard").play()
+	else:
+		AudioManager.get_node("GameGoal").play();
 	call_deferred("next_level")
 
 func show_leaderboard():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/sounds/menu_hover.ogg" type="AudioStream" id=1]
 [ext_resource path="res://assets/sounds/menu_select.ogg" type="AudioStream" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://assets/sounds/music_background.ogg" type="AudioStream" id=5]
 [ext_resource path="res://assets/sounds/impact_1.ogg" type="AudioStream" id=6]
 [ext_resource path="res://assets/sounds/trig_goal.ogg" type="AudioStream" id=7]
+[ext_resource path="res://assets/sounds/trig_leaderboard.ogg" type="AudioStream" id=8]
+[ext_resource path="res://assets/sounds/trig_highscore.ogg" type="AudioStream" id=9]
 
 [node name="AudioManager" type="Node"]
 script = ExtResource( 4 )
@@ -33,4 +35,12 @@ bus = "Sfx"
 
 [node name="GameGoal" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
+bus = "Sfx"
+
+[node name="GameHighscore" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+bus = "Sfx"
+
+[node name="GameLeaderboard" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
 bus = "Sfx"
