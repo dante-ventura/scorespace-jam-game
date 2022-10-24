@@ -5,8 +5,8 @@ export(int) var current_level = 0
 var score = 0
 var player = preload("res://scenes/Player.tscn").instance()
 var levels = { 
-	2: preload("res://scenes/Maze1.tscn").instance(),
-	1: preload("res://scenes/Maze2.tscn").instance(),
+	1: preload("res://scenes/Maze1.tscn").instance(),
+	2: preload("res://scenes/Maze2.tscn").instance(),
 	3: preload("res://scenes/Maze3.tscn").instance()
 }
 var default_data = "0"
