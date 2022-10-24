@@ -1,19 +1,37 @@
 extends Node2D
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
+	var time = loadTime()
+	var mins = fmod(time, 60*60) / 60
+	var secs = fmod(time, 60)
+	var milli = fmod(time, 1) * 1000
+	get_node("CanvasLayer/BestMin").text = "%02d" % [mins]
+	get_node("CanvasLayer/BestSec").text = "%02d" % [secs]
+	get_node("CanvasLayer/BestMilli").text = "%03d" % [milli]
+	time = loadTimeLast()
+	mins = fmod(time, 60*60) / 60
+	secs = fmod(time, 60)
+	milli = fmod(time, 1) * 1000
+	get_node("CanvasLayer/LastMin").text = "%02d" % [mins]
+	get_node("CanvasLayer/LastMin/LastSec").text = "%02d" % [secs]
+	get_node("CanvasLayer/LastMin/LastSec/LastMilli").text = "%03d" % [milli]
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func loadTime():
+	var file = File.new()
+	file.open("user://leaderboard.txt", File.READ)
+	var content = file.get_as_text()
+	file.close()
+	return float(content)
+	
+func loadTimeLast():
+	var file = File.new()
+	file.open("user://leaderboardCurr.txt", File.READ)
+	var content = file.get_as_text()
+	file.close()
+	return float(content)
+	
 
 
 func _on_Button_pressed():
